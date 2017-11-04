@@ -1,60 +1,118 @@
-﻿<Window x:Class="EncodingPwd.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:res="clr-namespace:EncodingPwd.Properties"
-        mc:Ignorable="d"
-        Background="#AAAAAA"
-        WindowStartupLocation="CenterScreen"
-        Title="{x:Static res:Resources.IDS_MAIN_TITLE}" 
-        Height="600" Width="900" MinHeight="600" MinWidth="900">
+﻿<mhcontrols:MetroWindow x:Class="EncodingPwd.MainWindow"
+                        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                        xmlns:mhcontrols="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                        xmlns:res="clr-namespace:EncodingPwd.Properties"
+                        mc:Ignorable="d"
+                        Name="mainWindow"
+                        TitleCharacterCasing="Normal"
+                        TitleAlignment="Stretch"
+                        TitlebarHeight="40"
+                        WindowTitleBrush="#5F6FFF"
+                        Background="#333333"
+                        Icon="Resources/Image/double_polygon.png"
+                        WindowStartupLocation="CenterScreen"
+                        Title="{x:Static res:Resources.IDS_MAIN_TITLE}" 
+                        Height="720" Width="1280" MinHeight="600" MinWidth="900"
+                        Loaded="MetroWindow_Loaded">
+    <Window.Resources>
+        <Image x:Key="img_save" Source="Resources/Image/sky_save.png"/>
+        <Image x:Key="img_settings" Source="Resources/Image/arm_wheel.png"/>
+    </Window.Resources>
+
+    <mhcontrols:MetroWindow.RightWindowCommands>
+        <mhcontrols:WindowCommands>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Image Width="24" Height="24" Stretch="Uniform" Margin="4 0 0 0"
+                       Source="Resources/Image/portrait.png"/>
+                <TextBlock Name="UserBlock" VerticalAlignment="Bottom" Margin="4 0 4 0"
+                           Text="{Binding Path=UserName, Mode=OneWay}"/>
+            </StackPanel>
+            <Button>
+                <StackPanel Orientation="Vertical">
+                    <Image Width="16" Height="16" Source="Resources/Image/gear_wheel.png"/>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Vertical">
+                    <Image Width="16" Height="16" Source="Resources/Image/question.png"/>
+                </StackPanel>
+            </Button>
+        </mhcontrols:WindowCommands>
+    </mhcontrols:MetroWindow.RightWindowCommands>
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120*"/>
-            <ColumnDefinition Width="4"/>
-            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="120*" MaxWidth="450"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="360*"/>
+            <ColumnDefinition Width="1"/>
+            <ColumnDefinition Width="120*" MaxWidth="450"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="300*"/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="36"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-
-        <StackPanel Name="mMainToolBar" 
-                    Orientation="Horizontal"
-                    Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3"
-                    Margin="2" Background="#000033"
-                    >
-            <!--<betactrls:ImageButton Grid.Column="2" Grid.Row="0"
-                 Margin="4,4,0,4" Background="#000033"
-                 Height="48" Width="48"/>
-            <betactrls:ImageButton Grid.Column="2" Grid.Row="0"
-                 Margin="4,4,0,4" Background="#000033"
-                 Height="48" Width="48"/>
-            <betactrls:ImageButton Grid.Column="2" Grid.Row="0"
-                 Margin="4,4,0,4" Background="#000033"
-                 Height="48" Width="48"/>-->
-
-        </StackPanel>
+        <Menu Name="mainMenu" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5" 
+              Background="#AFAFAF" Foreground="#11113F">
+            <MenuItem Header="File" Margin="4 0 0 0" Width="60" FontSize="14"
+                      Background="{Binding Path=Background, ElementName=mainMenu}"
+                      Foreground="{Binding Path=Foreground, ElementName=mainMenu}">
+                <MenuItem Header="Open" Width="180" 
+                          Background="{Binding Path=Background, ElementName=mainMenu}"
+                          Foreground="{Binding Path=Foreground, ElementName=mainMenu}"/>
+                <MenuItem Header="Save" Width="180" 
+                          Background="{Binding Path=Background, ElementName=mainMenu}"
+                          Foreground="{Binding Path=Foreground, ElementName=mainMenu}"/>
+                <MenuItem Header="Exit" Width="180" 
+                          Background="{Binding Path=Background, ElementName=mainMenu}"
+                          Foreground="{Binding Path=Foreground, ElementName=mainMenu}"/>
+            </MenuItem>
+            <Separator/>
+        </Menu>
+        <WrapPanel Name="mMainToolBar"
+                    Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5"
+                    Margin="2" Background="#AFAFAF" Orientation="Horizontal">
+            <Button Margin="2 2 0 2" Style="{DynamicResource MetroFlatButton}">
+                <StackPanel Orientation="Vertical" Margin="0">
+                    <Image Stretch="Fill" Width="24" Height="24" 
+                           Source="Resources/Image/sky_save.png"/>
+                    <!--<TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"
+                               Text="Save"/>-->
+                </StackPanel>
+            </Button>
+        </WrapPanel>
 
         <TreeView Name="mMainTreeView"
-                  Grid.Column="0" Grid.Row="1"
-                  Margin="2" Background="#000033">
+                  Grid.Column="0" Grid.Row="2"
+                  Margin="2" Background="#2A2A2A">
 
         </TreeView>
 
-        <DataGrid Name="mMainDataGrid"
-                 Grid.Column="2" Grid.Row="1"
-                 Margin="2" Background="#000033">
+        <DataGrid Name="mMainDataGrid" HeadersVisibility="None"
+                  Grid.Column="2" Grid.Row="2"
+                  Margin="2" Background="#333333">
+            <DataGrid.ColumnHeaderStyle>
+                <Style/>
+            </DataGrid.ColumnHeaderStyle>
 
         </DataGrid>
 
-        <StackPanel Name="mStatusPanel"
-                    Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3"
-                    Margin="2" Background="#000033">
+        <DockPanel Name="mMainDetailPanel"
+                 Grid.Column="4" Grid.Row="2"
+                 Margin="2" Background="#2A2A2A">
+            
+        </DockPanel>
 
-        </StackPanel>        
+        <StatusBar Name="mStatusPanel"
+                    Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="5"
+                    Margin="2" Background="#999999">
+
+        </StatusBar>        
     </Grid>
-</Window>
+</mhcontrols:MetroWindow>

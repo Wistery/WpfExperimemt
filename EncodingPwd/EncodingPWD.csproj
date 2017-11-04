@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -28,14 +28,22 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -87,8 +95,10 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,6 +106,46 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\double_polygon.png" />
+    <Resource Include="Resources\Image\sky_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\arm_wheel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\block.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\cmd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\add_one.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\lighting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\warningunsafe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\gear_wheel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\portrait.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Image\question.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
