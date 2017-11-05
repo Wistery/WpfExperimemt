@@ -147,5 +147,10 @@
   <ItemGroup>
     <Resource Include="Resources\Image\question.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fundamentals\" />
+    <Folder Include="Styles\" />
+    <Folder Include="Themes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
